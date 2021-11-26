@@ -1,0 +1,77 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - inform
+  - thankyou
+  - out_of_scope
+
+entities:
+  - programming
+  - sleep
+  - stress
+
+responses:
+  utter_greet:
+  - text: "Hi! It's time for your interview questions. Basically I'm a bot and I'll ask you some simple short answer questions. Would you like to answer a few questions about your programming knowledge?"
+
+  utter_goodbye:
+  - text: "See you tomorrow. Bye!"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  
+  utter_ask_confirm_programming:
+  - text: Did you practice programming everyday? Don't sweat it if you don't because it's really important to stay upto date!
+  utter_ask_programming:
+  - text: What kind of programming did you do 💪 ?
+  utter_ask_sleep:
+  - text: "How much sleep 💤 do you normally get?"
+  utter_ask_skill:
+  - text: "What kind of skill do u have?"
+  utter_ask_stress:
+  - text: "What is your stress level right now 🧘 ?"
+    buttons:
+      - title: "low"
+        payload: '/inform{"stress": "low"}'
+      - title: "medium"
+        payload: '/inform{"stress": "medium"}'
+      - title: "high"
+        payload: '/inform{"stress": "high"}'
+  utter_ask_goal:
+  - text: "Setting goals - even small ones - is a great way to focus your day. What do you want to accomplish today 🥇 ?"
+  utter_slots_values:
+  - text: "You've submitted the following answers:\n
+            - Programming?: {confirm_programming}\n
+            - Type of programming: {programming}\n
+            - Sleep: {sleep}\n
+            - Programming skills?: {skill}\n
+            - Stress level: {stress}\n
+            - Goal: {goal}"
+  utter_no_worries:
+  - text: "No problem :)"
+  utter_ask_continue:
+  - text: "Sorry, I don't quite understand. Do you want to continue?"
+
+slots:
+  confirm_programming:
+    type: unfeaturized
+  programming:
+    type: unfeaturized
+  sleep:
+    type: unfeaturized
+  skill:
+    type: unfeaturized
+  stress:
+    type: unfeaturized
+  goal:
+    type: unfeaturized
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
+
+forms:
+  - health_form
